@@ -12,13 +12,15 @@ $redRowBackgroundColor: #FFFAFB;
 
 html, body {
   min-height: 100%;
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: "proxima-nova", Helvetica, Arial, sans-serif;
+
 }
 
 p {
   color: #FFF;
 } p.advisoryLabel {
-  font-size: 2em;
+  font-size: 2.5em;
+  font-weight: 300;
 }
 
 body {
@@ -33,7 +35,16 @@ body {
 }
 
 .container {
-  lost-center: 80%;
+  lost-center: 40%;
+}
+
+@media only screen and (min-width: 768px) {
+
+}
+@media only screen and (max-width: 767px) {
+  .container {
+    lost-center: 80%;
+  }
 }
 
 .list-header {
@@ -51,9 +62,11 @@ body {
 } .list-header div#advisory-image {
   height: 200px;
   margin: 0;
+  margin-top: 3em;
+  padding: 0;
 }
 
-.list-header div * {
+.list-header div p {
   margin: 0;
 }
 

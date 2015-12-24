@@ -19,7 +19,7 @@ var App = React.createClass({
     console.log(this.state.cities);
     return <div>
       <Header
-        nearestCity={this.state.nearestCity} />    
+        nearestCity={this.state.nearestCity} />
       <List
         items={this.state.cities} />
       <section>

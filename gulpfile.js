@@ -15,6 +15,7 @@ var autoprefixer = require('autoprefixer');
 var cssnext = require('cssnext');
 var precss = require('precss');
 var lost = require('lost');
+var mqpacker = require('css-mqpacker');
 
 var notify = function(error) {
   var message = 'In: ';
@@ -83,7 +84,8 @@ gulp.task('pcss', function(){
     autoprefixer,
     cssnext,
     precss,
-    lost
+    lost,
+    mqpacker
   ];
   return gulp.src('./pcss/**/*.pcss')
     .pipe(postcss(processors))
