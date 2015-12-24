@@ -8,6 +8,13 @@ var notifier = require('node-notifier');
 var server = require('gulp-server-livereload');
 var concat = require('gulp-concat');
 var watch = require('gulp-watch');
+var postcss = require('gulp-postcss');
+
+// PostCSS processors
+var autoprefixer = require('autoprefixer');
+var cssnext = require('cssnext');
+var precss = require('precss');
+var lost = require('lost');
 
 var notify = function(error) {
   var message = 'In: ';
@@ -71,6 +78,18 @@ gulp.task('serve', function(done) {
     }));
 });
 
+gulp.task('pcss', function(){
+  var processors = [
+    autoprefixer,
+    cssnext,
+    precss,
+    lost
+  ];
+  return gulp.src('./pcss/**/*.pcss')
+    .pipe(postcss(processors))
+    .pipe(concat('main.css'))
+    .pipe(gulp.dest('./'));
+});
 // gulp.task('sass', function () {
 //   gulp.src('./sass/**/*.scss')
 //     .pipe(sass().on('error', sass.logError))
@@ -78,8 +97,9 @@ gulp.task('serve', function(done) {
 //     .pipe(gulp.dest('./'));
 // });
 
-gulp.task('default', ['build', 'serve', 'watch']);
+gulp.task('default', ['build', 'serve', 'pcss', 'watch']);
 
 gulp.task('watch', function () {
+  gulp.watch('./pcss/**/*.pcss', ['pcss']);
   // gulp.watch('./sass/**/*.scss', ['sass']);
 });

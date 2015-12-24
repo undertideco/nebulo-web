@@ -1,0 +1,75 @@
+/* Colors */
+$topGradientColor: #C3CEC5;
+$bottomGradientColor: #5F779E;
+/* Advisory Colors */
+$advisoryGreenColor: #11CB77;
+$advisoryOrangeColor: #FFBF56;
+$advisoryRedColor: #FF3E56;
+/* Advisory Cell Color */
+$greenRowBackgroundColor: #FAFFFB;
+$orangeRowBackgroundColor: #FFFDFA;
+$redRowBackgroundColor: #FFFAFB;
+
+html, body {
+  min-height: 100%;
+}
+
+body {
+  position: relative;
+  background: -webkit-linear-gradient(45deg, $topGradientColor 10%, $bottomGradientColor 90%);
+  background: linear-gradient(45deg, $topGradientColor 10%, $bottomGradientColor 90%);
+  overflow: hidden;
+  background-size: 200% 100% !important;
+  background-repeat: no-repeat;
+  -webkit-animation: move 10s ease infinite;
+  animation: move 10s ease infinite;
+}
+
+.list-header {
+  lost-utility: clearfix;
+  width: 100%;
+}
+
+.list-header div {
+  lost-column: 1/2 1;
+}
+
+p.advisory-0 {
+  color: $advisoryGreenColor; }
+  p.advisory-1,
+  p.advisory-2 {
+    color: $advisoryOrangeColor; }
+  p.advisory-3,
+  p.advisory-4 {
+    color: $advisoryRedColor;
+  }
+
+@define-mixin cityListItem $color {
+  list-style: none;
+  background: $color;
+  padding: 1em;
+}
+
+li.advisory-0 {
+  @mixin cityListItem $greenRowBackgroundColor; }
+  li.advisory-1,
+  li.advisory-2 {
+    @mixin cityListItem $orangeRowBackgroundColor; }
+  li.advisory-3,
+  li.advisory-4 {
+    @mixin cityListItem $redRowBackgroundColor;
+  }
+
+@-webkit-keyframes move {
+    0% {
+        background-position: 0 0;
+    }
+
+    50% {
+        background-position: 100% 0;
+    }
+
+    100% {
+        background-position: 0 0;
+    }
+}
