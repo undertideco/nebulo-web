@@ -8,6 +8,8 @@ module.exports = React.createClass({
         return <ListItem
           cityName={item.city_name}
           data={item.data}
+          advisoryCode={item.advisory_code}
+          key={item.id}
           />
       });
 
@@ -15,8 +17,8 @@ module.exports = React.createClass({
     }
   },
   render: function() {
-    return <ul>
+    return <div className="nearbyCitiesList">
       {this.renderList()}
-    </ul>
+    </div>
   }
 });
