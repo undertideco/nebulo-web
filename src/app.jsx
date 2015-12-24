@@ -18,14 +18,10 @@ var App = React.createClass({
   render: function() {
     console.log(this.state.cities);
     return <div>
-      <section className="list-header">
-        <Header
-          nearestCity={this.state.nearestCity} />
-      </section>
-      <section className="list-section">
-        <List
-          items={this.state.cities} />
-      </section>
+      <Header
+        nearestCity={this.state.nearestCity} />    
+      <List
+        items={this.state.cities} />
       <section>
         <button onClick={this.refreshButtonClicked}
           >Refresh

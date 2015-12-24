@@ -7,14 +7,20 @@ module.exports = React.createClass({
     }
   },
   componentWillReceiveProps: function(nextProps) {
-    console.log(nextProps.nearestCity.advisory_code);
+    var advisoryCode = nextProps.nearestCity.advisory_code;
     this.setState({
-      advisory: this.getAdvisoryString(nextProps.nearestCity.advisory_code)
+      advisory: this.getAdvisoryString(advisoryCode),
+      advisoryImageUrl: this.getAdvisoryImageUrl(advisoryCode)
     });
   },
   render: function() {
-    return <section className="header">
-      <p>{this.state.advisory}</p>
+    return <section className="list-header">
+      <div id="advisory-image">
+        <img src={this.state.advisoryImageUrl}></img>
+      </div>
+      <div>
+        <p className="advisoryLabel">{this.state.advisory}</p>
+      </div>
     </section>
   },
   getAdvisoryString: function(advisoryCode) {
@@ -40,5 +46,26 @@ module.exports = React.createClass({
     }
 
     return advisoryUpdate;
+  },
+  getAdvisoryImageUrl: function(advisoryCode) {
+    var imageUrl;
+
+    switch (advisoryCode) {
+      case 0:
+        imageUrl = 'img/good.svg';
+        break;
+      case 1:
+        imageUrl = 'img/moderate.svg';
+        break;
+      case 2:
+      case 3:
+      case 4:
+        imageUrl = 'img/hazardous.svg';
+        break;
+      default:
+        imageUrl = 'img/good.svg';
+    }
+
+    return imageUrl;
   }
 })
