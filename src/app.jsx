@@ -22,15 +22,7 @@ var App = React.createClass({
         nearestCity={this.state.nearestCity} />
       <List
         items={this.state.cities} />
-      <section>
-        <button onClick={this.refreshButtonClicked}
-          >Refresh
-        </button>
-      </section>
     </div>
-  },
-  refreshButtonClicked: function() {
-    this.getLocationAndLoadCities();
   },
   getLocationAndLoadCities: function() {
     navigator.geolocation.getCurrentPosition(function(position){
