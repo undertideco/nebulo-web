@@ -6,9 +6,7 @@ module.exports = React.createClass({
     if (this.props.items) {
       var children = this.props.items.map(function(item){
         return <ListItem
-          cityName={item.city_name}
-          data={item.data}
-          advisoryCode={item.advisory_code}
+          cityItem={item}
           key={item.id}
           />
       });

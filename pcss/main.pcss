@@ -9,6 +9,8 @@ $advisoryRedColor: #FF3E56;
 $greenRowBackgroundColor: #FAFFFB;
 $orangeRowBackgroundColor: #FFFDFA;
 $redRowBackgroundColor: #FFFAFB;
+$cityLabelColor: #ABADAB;
+$cityTemperatureColor: #8A8A8A;
 
 html, body {
   min-height: 100%;
@@ -34,13 +36,24 @@ body {
   animation: move 10s ease infinite;
 }
 
+@-webkit-keyframes move {
+    0% {
+        background-position: 0 0;
+    }
+
+    50% {
+        background-position: 100% 0;
+    }
+
+    100% {
+        background-position: 0 0;
+    }
+}
+
 .container {
   lost-center: 40%;
 }
 
-@media only screen and (min-width: 768px) {
-
-}
 @media only screen and (max-width: 767px) {
   .container {
     lost-center: 80%;
@@ -70,47 +83,52 @@ body {
   margin: 0;
 }
 
-@define-mixin cityLabel $color {
+@define-mixin cityDataLabel $color {
   font-family: Helvetica, Arial, sans-serif;
   color: $color;
 }
 
 p.advisory-0 {
-  @mixin cityLabel $advisoryGreenColor; }
+  @mixin cityDataLabel $advisoryGreenColor; }
   p.advisory-1,
   p.advisory-2 {
-    @mixin cityLabel $advisoryOrangeColor; }
+    @mixin cityDataLabel $advisoryOrangeColor; }
   p.advisory-3,
   p.advisory-4 {
-    @mixin cityLabel $advisoryRedColor;
+    @mixin cityDataLabel $advisoryRedColor;
   }
 
 @define-mixin cityListItem $color {
-  list-style: none;
   background: $color;
-  padding: 1em;
+  height: 50%;
 }
 
-li.advisory-0 {
+p.city-label {
+  color: $cityLabelColor;
+}
+
+p.city-temperature-label {
+  color: $cityTemperatureColor;
+}
+
+div.advisory-0 {
   @mixin cityListItem $greenRowBackgroundColor; }
-  li.advisory-1,
-  li.advisory-2 {
+  div.advisory-1,
+  div.advisory-2 {
     @mixin cityListItem $orangeRowBackgroundColor; }
-  li.advisory-3,
-  li.advisory-4 {
+  div.advisory-3,
+  div.advisory-4 {
     @mixin cityListItem $redRowBackgroundColor;
   }
 
-@-webkit-keyframes move {
-    0% {
-        background-position: 0 0;
-    }
+div.item-container {
+  lost-utility: clearfix;
+}
 
-    50% {
-        background-position: 100% 0;
-    }
+div.city-container {
+  lost-column: 1/3;
+}
 
-    100% {
-        background-position: 0 0;
-    }
+div.data-container {
+  lost-offset: 1/3;
 }
