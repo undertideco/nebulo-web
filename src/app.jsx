@@ -5,6 +5,8 @@ var List = require('./list');
 var Header = require('./header');
 var baseUrl = 'https://lab.jurvis.co/nebulo/';
 
+var Api = require('./utils/api');
+
 var App = React.createClass({
   getInitialState: function() {
     return {
@@ -16,7 +18,7 @@ var App = React.createClass({
     this.getLocationAndLoadCities();
   },
   render: function() {
-    console.log(this.state.cities);
+    console.log(this.state);
     return <div>
       <Header
         nearestCity={this.state.nearestCity} />
@@ -25,23 +27,15 @@ var App = React.createClass({
     </div>
   },
   getLocationAndLoadCities: function() {
-    navigator.geolocation.getCurrentPosition(function(position){
-      var requestUrl = baseUrl + 'nearby?lat=' + position.coords.latitude + "&lon=" + position.coords.longitude;
-      console.log(requestUrl);
-      var request = new XMLHttpRequest();
-      request.onreadystatechange = function() {
-        if (request.readyState == 4 && request.status == 200) {
-          var response = JSON.parse(request.response);
-          if (response['success'] === true) {
-            if (this.isMounted()) {
-              this.setState({ cities: response['nearby_cities'], nearestCity: response['nearby_cities'][0]});
-            }
-          }
+    navigator.geolocation.getCurrentPosition(function(position) {
+      Api.getNearby(position)
+      .then(function(data){
+        console.log(data.nearby_cities);
+        if(this.isMounted()){
+          this.setState({ cities: data.nearby_cities, nearestCity: data.nearby_cities[0]});
+          console.log('yo');
         }
-      }.bind(this);
-      request.open('GET', requestUrl, true);
-      request.send();
-
+      }.bind(this))
     }.bind(this));
   }
 });
