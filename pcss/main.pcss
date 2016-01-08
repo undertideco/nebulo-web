@@ -69,24 +69,26 @@ body {
 .list-header {
   // height: 100%;
   lost-center: 90%;
-}
 
-.list-header div {
-  lost-column: 1/1 1;
-  lost-row: 1/2;
-  lost-align: center;
-  /* TODO: Not sure if this is the best implementation */
-  padding-top: 3em;
-  padding-bottom: 3em;
-} .list-header div#advisory-image {
-  height: 200px;
-  margin: 0;
-  margin-top: 3em;
-  padding: 0;
-}
+  div {
+    lost-column: 1/1 1;
+    lost-row: 1/2;
+    lost-align: center;
+    /* TODO: Not sure if this is the best implementation */
+    padding-top: 3em;
+    padding-bottom: 3em;
+  }
 
-.list-header div p {
-  margin: 0;
+  p {
+    margin: 0;
+  }
+
+  #advisory-image {
+    height: 200px;
+    margin: 0;
+    margin-top: 3em;
+    padding: 0;
+  }
 }
 
 @define-mixin cityDataLabel $color {
@@ -128,12 +130,23 @@ div.advisory-0 {
     @mixin cityListItem $redRowBackgroundColor;
   }
 
+@-webkit-keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1.0;
+  }
+}
+
 .item-container {
   lost-center: 100% 1em;
   padding-top: 0.75em;
   padding-bottom: 0.75em;
   display: flex;
   align-items: center;
+  animation: fadein .5s ease-out;
 }
 
 .city-container {

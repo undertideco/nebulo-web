@@ -3,7 +3,6 @@ var ReactDOM = require("react-dom");
 var Fetch = require('whatwg-fetch');
 var List = require('./list');
 var Header = require('./header');
-var baseUrl = 'https://lab.jurvis.co/nebulo/';
 
 var Api = require('./utils/api');
 
