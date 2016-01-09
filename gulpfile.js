@@ -89,15 +89,10 @@ gulp.task('pcss', function(){
   ];
   return gulp.src('./pcss/**/*.pcss')
     .pipe(postcss(processors))
+    .on('error', notify)
     .pipe(concat('main.css'))
     .pipe(gulp.dest('./'));
 });
-// gulp.task('sass', function () {
-//   gulp.src('./sass/**/*.scss')
-//     .pipe(sass().on('error', sass.logError))
-//     .pipe(concat('style.css'))
-//     .pipe(gulp.dest('./'));
-// });
 
 gulp.task('default', ['build', 'serve', 'pcss', 'watch']);
 
