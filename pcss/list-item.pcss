@@ -1,0 +1,66 @@
+/* Advisory Cell Color */
+$greenRowBackgroundColor: #FAFFFB;
+$orangeRowBackgroundColor: #FFFDFA;
+$redRowBackgroundColor: #FFFAFB;
+$cityLabelColor: #ABADAB;
+$cityTemperatureColor: #8A8A8A;
+/* Advisory Colors */
+$advisoryGreenColor: #11CB77;
+$advisoryOrangeColor: #FFBF56;
+$advisoryRedColor: #FF3E56;
+
+
+.item-container.advisory-0 {
+  @mixin cityListItem $greenRowBackgroundColor; }
+  .advisory-1,
+  .item-container.advisory-2 {
+    @mixin cityListItem $orangeRowBackgroundColor; }
+  .item-container.advisory-3,
+  .item-container.advisory-4 {
+    @mixin cityListItem $redRowBackgroundColor;
+  }
+
+.item-container {
+  lost-center: 100% 1em;
+  padding-top: 0.75em;
+  padding-bottom: 0.75em;
+  display: flex;
+  align-items: center;
+  animation: fadein .5s ease-out;
+
+  .city-container {
+    lost-offset: 3/8;
+    lost-column: 4/8;
+
+    div {
+      lost-row: 1/2;
+      margin: 0;
+
+      p {
+        margin: 0;
+      } p.city-label {
+        color: $cityLabelColor;
+      } p.city-temperature-label {
+        color: $cityTemperatureColor;
+      }
+    }
+  }
+
+  .data-container {
+    height: 100%;
+    lost-column: 1/8;
+    lost-align: center;
+
+    p {
+      margin: 0;
+    } p.advisory-0 {
+      @mixin cityDataLabel $advisoryGreenColor; }
+    p.advisory-1,
+    p.advisory-2 {
+      @mixin cityDataLabel $advisoryOrangeColor; }
+    p.advisory-3,
+    p.advisory-4 {
+      @mixin cityDataLabel $advisoryRedColor;
+    }
+  }
+}

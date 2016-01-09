@@ -1,28 +1,14 @@
 /* Colors */
 $topGradientColor: #C3CEC5;
 $bottomGradientColor: #5F779E;
-/* Advisory Colors */
-$advisoryGreenColor: #11CB77;
-$advisoryOrangeColor: #FFBF56;
-$advisoryRedColor: #FF3E56;
-/* Advisory Cell Color */
-$greenRowBackgroundColor: #FAFFFB;
-$orangeRowBackgroundColor: #FFFDFA;
-$redRowBackgroundColor: #FFFAFB;
-$cityLabelColor: #ABADAB;
-$cityTemperatureColor: #8A8A8A;
 
 html, body {
   min-height: 100vh;
   font-family: "proxima-nova", Helvetica, Arial, sans-serif;
-
 }
 
 p {
   color: #FFF;
-} p.advisoryLabel {
-  font-size: 2.5em;
-  font-weight: 300;
 }
 
 body {
@@ -66,69 +52,16 @@ body {
   }
 }
 
-.list-header {
-  // height: 100%;
-  lost-center: 90%;
-
-  div {
-    lost-column: 1/1 1;
-    lost-row: 1/2;
-    lost-align: center;
-    /* TODO: Not sure if this is the best implementation */
-    padding-top: 3em;
-    padding-bottom: 3em;
-  }
-
-  p {
-    margin: 0;
-  }
-
-  #advisory-image {
-    height: 200px;
-    margin: 0;
-    margin-top: 3em;
-    padding: 0;
-  }
-}
-
 @define-mixin cityDataLabel $color {
   font-family: Helvetica, Arial, sans-serif;
   color: $color;
   font-size: 1.3em;
 }
 
-p.advisory-0 {
-  @mixin cityDataLabel $advisoryGreenColor; }
-  p.advisory-1,
-  p.advisory-2 {
-    @mixin cityDataLabel $advisoryOrangeColor; }
-  p.advisory-3,
-  p.advisory-4 {
-    @mixin cityDataLabel $advisoryRedColor;
-  }
-
 @define-mixin cityListItem $color {
   background: $color;
   font-size: 1.25em;
 }
-
-p.city-label {
-  color: $cityLabelColor;
-}
-
-p.city-temperature-label {
-  color: $cityTemperatureColor;
-}
-
-div.advisory-0 {
-  @mixin cityListItem $greenRowBackgroundColor; }
-  div.advisory-1,
-  div.advisory-2 {
-    @mixin cityListItem $orangeRowBackgroundColor; }
-  div.advisory-3,
-  div.advisory-4 {
-    @mixin cityListItem $redRowBackgroundColor;
-  }
 
 @-webkit-keyframes fadein {
   0% {
@@ -138,38 +71,4 @@ div.advisory-0 {
   100% {
     opacity: 1.0;
   }
-}
-
-.item-container {
-  lost-center: 100% 1em;
-  padding-top: 0.75em;
-  padding-bottom: 0.75em;
-  display: flex;
-  align-items: center;
-  animation: fadein .5s ease-out;
-}
-
-.city-container {
-  lost-offset: 3/8;
-  lost-column: 4/8;
-}
-
-.city-container div {
-  lost-row: 1/2;
-  margin: 0;
-}
-
-.city-container div p {
-  margin: 0;
-}
-
-
-.data-container {
-  height: 100%;
-  lost-column: 1/8;
-  lost-align: center;
-}
-
-.data-container p {
-  margin: 0;
 }
