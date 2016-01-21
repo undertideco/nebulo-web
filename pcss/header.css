@@ -1,5 +1,4 @@
-.list-header {
-  // height: 100%;
+.listHeader {
   lost-center: 90%;
 
   div {
@@ -18,7 +17,7 @@
     font-weight: 300;
   }
 
-  #advisory-image {
+  #advisoryImage {
     height: 200px;
     margin: 0;
     margin-top: 3em;

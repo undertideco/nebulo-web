@@ -1,5 +1,6 @@
 var React = require('react');
-var ListItem = require('./list-item')
+var ListItem = require('./list-item');
+require('../../pcss/main.css');
 
 module.exports = React.createClass({
   renderList: function() {

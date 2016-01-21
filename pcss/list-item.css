@@ -9,18 +9,28 @@ $advisoryGreenColor: #11CB77;
 $advisoryOrangeColor: #FFBF56;
 $advisoryRedColor: #FF3E56;
 
+@define-mixin cityDataLabel $color {
+  font-family: Helvetica, Arial, sans-serif;
+  color: $color;
+  font-size: 1.3em;
+}
 
-.item-container.advisory-0 {
+@define-mixin cityListItem $color {
+  background: $color;
+  font-size: 1.25em;
+}
+
+.itemContainer.advisory0 {
   @mixin cityListItem $greenRowBackgroundColor; }
-  .advisory-1,
-  .item-container.advisory-2 {
+  .itemContainer.advisory1,
+  .itemContainer.advisory2 {
     @mixin cityListItem $orangeRowBackgroundColor; }
-  .item-container.advisory-3,
-  .item-container.advisory-4 {
+  .itemContainer.advisory3,
+  .itemContainer.advisory4 {
     @mixin cityListItem $redRowBackgroundColor;
   }
 
-.item-container {
+.itemContainer {
   lost-center: 100% 1em;
   padding-top: 0.75em;
   padding-bottom: 0.75em;
@@ -28,7 +38,7 @@ $advisoryRedColor: #FF3E56;
   align-items: center;
   animation: fadein .5s ease-out;
 
-  .city-container {
+  .cityContainer {
     lost-offset: 3/8;
     lost-column: 4/8;
 
@@ -38,28 +48,28 @@ $advisoryRedColor: #FF3E56;
 
       p {
         margin: 0;
-      } p.city-label {
+      } p.cityLabel {
         color: $cityLabelColor;
-      } p.city-temperature-label {
+      } p.cityTemperatureLabel {
         color: $cityTemperatureColor;
       }
     }
   }
 
-  .data-container {
+  .dataContainer {
     height: 100%;
     lost-column: 1/8;
     lost-align: center;
 
     p {
       margin: 0;
-    } p.advisory-0 {
+    } p.advisory0 {
       @mixin cityDataLabel $advisoryGreenColor; }
-    p.advisory-1,
-    p.advisory-2 {
+    p.advisory1,
+    p.advisory2 {
       @mixin cityDataLabel $advisoryOrangeColor; }
-    p.advisory-3,
-    p.advisory-4 {
+    p.advisory3,
+    p.advisory4 {
       @mixin cityDataLabel $advisoryRedColor;
     }
   }

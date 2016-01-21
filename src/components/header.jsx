@@ -1,4 +1,5 @@
 var React = require('react');
+import styles from '../../pcss/header.css';
 
 module.exports = React.createClass({
   getInitialState: function() {
@@ -14,12 +15,12 @@ module.exports = React.createClass({
     });
   },
   render: function() {
-    return <section className="list-header">
-      <div id="advisory-image">
+    return <section className={styles.listHeader}>
+      <div id={styles.advisoryImage}>
         <img src={this.state.advisoryImageUrl}></img>
       </div>
       <div>
-        <p className="advisoryLabel">{this.state.advisory}</p>
+        <p className={styles.advisoryLabel}>{this.state.advisory}</p>
       </div>
     </section>
   },
