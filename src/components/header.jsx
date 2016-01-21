@@ -1,30 +1,37 @@
-var React = require('react');
+import React, {Component} from 'react';
 import styles from '../../pcss/header.css';
 
-module.exports = React.createClass({
-  getInitialState: function() {
-    return {
+class Header extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
       advisory: ""
     }
-  },
-  componentWillReceiveProps: function(nextProps) {
+  }
+
+  render() {
+    return (
+      <section className={styles.listHeader}>
+        <div id={styles.advisoryImage}>
+          <img src={this.state.advisoryImageUrl}></img>
+        </div>
+        <div>
+          <p className={styles.advisoryLabel}>{this.state.advisory}</p>
+        </div>
+      </section>
+    );
+  }
+
+  componentWillReceiveProps(nextProps) {
     var advisoryCode = nextProps.nearestCity.advisory_code;
     this.setState({
       advisory: this.getAdvisoryString(advisoryCode),
       advisoryImageUrl: this.getAdvisoryImageUrl(advisoryCode)
     });
-  },
-  render: function() {
-    return <section className={styles.listHeader}>
-      <div id={styles.advisoryImage}>
-        <img src={this.state.advisoryImageUrl}></img>
-      </div>
-      <div>
-        <p className={styles.advisoryLabel}>{this.state.advisory}</p>
-      </div>
-    </section>
-  },
-  getAdvisoryString: function(advisoryCode) {
+  }
+
+  getAdvisoryString(advisoryCode) {
     var advisoryUpdate = "Server Error";
     switch (advisoryCode) {
       case 0:
@@ -47,8 +54,9 @@ module.exports = React.createClass({
     }
 
     return advisoryUpdate;
-  },
-  getAdvisoryImageUrl: function(advisoryCode) {
+  }
+
+  getAdvisoryImageUrl(advisoryCode) {
     var imageUrl;
 
     switch (advisoryCode) {
@@ -69,4 +77,7 @@ module.exports = React.createClass({
 
     return imageUrl;
   }
-})
+
+}
+
+export default Header;
