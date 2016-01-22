@@ -1,23 +1,15 @@
 var React = require('react');
-var ListItem = require('./list-item');
+import ListItem from './list-item';
 require('../../pcss/main.css');
 
-module.exports = React.createClass({
-  renderList: function() {
-    if (this.props.items) {
-      var children = this.props.items.map(function(item){
-        return <ListItem
-          cityItem={item}
-          key={item.id}
-          />
-      });
+const List = ({items}) => {
+  return <div className="nearbyCitiesList">
+    {items.map((item) => {
+      return <ListItem
+        cityItem={item}
+        key={item.id}/>
+    })}
+  </div>
+}
 
-      return children;
-    }
-  },
-  render: function() {
-    return <div className="nearbyCitiesList">
-      {this.renderList()}
-    </div>
-  }
-});
+export default List;
