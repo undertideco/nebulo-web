@@ -13,7 +13,7 @@ class App extends Component {
     super(props);
     this.state = {
       cities: [],
-      nearbyCity: null
+      nearestCity: null
     };
 
     this.getLocationAndLoadCities();

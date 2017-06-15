@@ -2,7 +2,6 @@ import React from 'react';
 import styles from '../../pcss/list-item.css';
 
 const ListItem = ({cityItem}) => {
-  console.log(cityItem);
   var classString = 'advisory' + cityItem.advisory_code;
   return (
     <div className={styles.itemContainer + " " + styles[classString]}>
