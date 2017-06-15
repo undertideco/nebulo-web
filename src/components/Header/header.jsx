@@ -1,5 +1,6 @@
-import React, {Component} from 'react';
-import styles from '../../pcss/header.css';
+import * as React from 'react';
+import { Component } from 'react';
+import styles from './header.css';
 
 class Header extends Component {
   constructor(props) {

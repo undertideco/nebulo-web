@@ -36,18 +36,18 @@ body {
     }
 }
 
-:global(.container) {
+.container {
   lost-center: 30%;
 }
 
 @media only screen and (max-width: 1000px) {
-  :global(.container) {
+  .container {
     lost-center: 60%;
   }
 }
 
 @media only screen and (max-width: 768px) {
-  :global(.container) {
+  container {
     lost-center: 80%;
   }
 }

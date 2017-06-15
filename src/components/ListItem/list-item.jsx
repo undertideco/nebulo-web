@@ -1,5 +1,5 @@
-import React from 'react';
-import styles from '../../pcss/list-item.css';
+import * as React from 'react';
+import styles from './list-item.css';
 
 const ListItem = ({cityItem}) => {
   console.log(cityItem);
