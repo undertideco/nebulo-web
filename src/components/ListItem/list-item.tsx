@@ -1,5 +1,6 @@
-import React from 'react';
-import styles from '../../pcss/list-item.css';
+import * as React from 'react';
+import { SFC } from 'react';
+import * as styles from './list-item.css';
 
 const ListItem = ({cityItem}) => {
   var classString = 'advisory' + cityItem.advisory_code;

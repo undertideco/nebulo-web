@@ -1,37 +1,67 @@
-// PostCSS processors
-var autoprefixer = require('autoprefixer');
-var cssnext = require('cssnext');
-var precss = require('precss');
-var lost = require('lost');
-var mqpacker = require('css-mqpacker');
+const path = require('path');
 
+// PostCSS processors
+const autoprefixer = require('autoprefixer');
+const cssnext = require('cssnext');
+const precss = require('precss');
+const lost = require('lost');
+const mqpacker = require('css-mqpacker');
+const fontmagician = require('postcss-font-magician')({hosted : './src/fonts'});
 
 module.exports = {
+  devtool: 'source-map',
   entry: [
-    './src/index.jsx'
+    './src/index.tsx',
   ],
   output: {
-    path: __dirname,
-    publicPath: '/',
-    filename: 'bundle.js'
+    path: path.resolve('dist'),
+    publicPath: 'dist',
+    filename: 'bundle.js',
   },
   module: {
-    loaders: [{
-      exclude: /node_modules/,
-      loader: 'babel'
-    },
-    {
-      test: /\.css$/,
-      loader: "style-loader!css-loader?modules&importLoaders=1!postcss-loader"
-    }]
-  },
-  postcss: function() {
-    return [autoprefixer, precss, cssnext, lost, mqpacker];
+    rules: [
+      { test: /\.(t|j)sx?$/, use: { loader: 'awesome-typescript-loader' } },
+      { enforce: "pre", test: /\.js$/, loader: "source-map-loader" },
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          { loader: 'typings-for-css-modules-loader', options: { modules: true, namedExport: true } },
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: function() {
+                return [autoprefixer, precss, cssnext, lost, mqpacker, fontmagician];
+              }
+            }
+          }
+        ]
+      },
+      {
+        test: /\.(jpe?g|png|gif)$/i,
+        use: [
+          'img-loader',
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192,
+            },
+          }
+        ]
+      },
+      {
+        test: /\.svg$/,
+        use: ['raw-loader']
+      }
+    ]
   },
   resolve: {
-    extensions: ['', '.js', '.jsx']
+    extensions: ['.ts', '.tsx', '.js', '.jsx'],
   },
   devServer: {
-    contentBase: './'
-  }
+    port: 3000,
+    historyApiFallback: true,
+    inline: true,
+  },
+  plugins: [],
 };
