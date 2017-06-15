@@ -3,4 +3,4 @@ bundle.js
 bundle.js.map
 npm-debug.log
 /.vscode/chrome
-/src/components/*/*.d.ts
+*.d.ts
