@@ -1,7 +1,8 @@
 import * as React from 'react';
+import  { SFC } from 'react';
 import ListItem from '../ListItem/list-item';
 
-const List = ({ items }) => {
+const List: SFC<IListProps> = ({ items }) => {
   return (
       <div className="nearbyCitiesList">
         {items.map((item) => {
@@ -11,7 +12,6 @@ const List = ({ items }) => {
         })}
       </div>
   );
-
 };
 
 export default List;
