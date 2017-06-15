@@ -1,7 +1,8 @@
 import * as React from 'react';
-import styles from './list-item.css';
+import { SFC } from 'react';
+import * as styles from './list-item.css';
 
-const ListItem = ({cityItem}) => {
+const ListItem: SFC<IListItemProps> = ({cityItem}) => {
   console.log(cityItem);
   var classString = 'advisory' + cityItem.advisory_code;
   return (

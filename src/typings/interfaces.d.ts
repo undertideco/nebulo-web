@@ -6,4 +6,7 @@ interface IAppState {
 interface IHeaderState {
   advisory: string;
   advisoryImageUrl: string;
+
+interface IListItemProps {
+  cityItem: City;
 }
