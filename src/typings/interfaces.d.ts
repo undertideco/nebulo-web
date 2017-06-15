@@ -1,4 +1,9 @@
 interface IAppState {
   cities: Array<City>;
-  nearbyCity?: City;
+  nearestCity?: City;
+}
+
+interface IHeaderState {
+  advisory: string;
+  advisoryImageUrl: string;
 }

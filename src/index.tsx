@@ -12,7 +12,7 @@ class App extends Component<any, IAppState> {
     super(props);
     this.state = {
       cities: [],
-      nearbyCity: undefined
+      nearestCity: undefined
     };
 
     this.getLocationAndLoadCities();
@@ -22,7 +22,7 @@ class App extends Component<any, IAppState> {
     return (
       <div className={styles.container}>
         <Header
-          nearestCity={this.state.nearbyCity} />
+          nearestCity={this.state.nearestCity} />
         <List
           items={this.state.cities} />
       </div>

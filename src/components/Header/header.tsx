@@ -1,13 +1,14 @@
 import * as React from 'react';
 import { Component } from 'react';
-import styles from './header.css';
+import * as  styles from './header.css';
 
-class Header extends Component {
+class Header extends Component<any, IHeaderState> {
   constructor(props) {
     super(props);
 
     this.state = {
-      advisory: ""
+      advisory: "",
+      advisoryImageUrl: "#"
     }
   }
 
