@@ -1,4 +1,4 @@
-const baseUrl = 'https://lab.jurvis.co/nebulo/';
+const baseUrl = 'https://nebulo.undertide.co/api/';
 
 export default {
   getNearby: (position) => {
