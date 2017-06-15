@@ -2,8 +2,7 @@ import * as React from 'react';
 import { SFC } from 'react';
 import * as styles from './list-item.css';
 
-const ListItem: SFC<IListItemProps> = ({cityItem}) => {
-  console.log(cityItem);
+const ListItem = ({cityItem}) => {
   var classString = 'advisory' + cityItem.advisory_code;
   return (
     <div className={styles.itemContainer + " " + styles[classString]}>
