@@ -1,19 +1,18 @@
-import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
-import Fetch from 'whatwg-fetch';
-import List from './components/list';
-import Header from './components/header';
+import * as React from 'react';
+import { Component } from 'react';
+import { render } from 'react-dom';
+import List from './components/List/list';
+import Header from './components/Header/header';
 
 import Api from './utils/api';
+import * as styles from './main.css';
 
-import style from '../pcss/main.css';
-
-class App extends Component {
+class App extends Component<any, IAppState> {
   constructor(props) {
     super(props);
     this.state = {
       cities: [],
-      nearbyCity: null
+      nearbyCity: undefined
     };
 
     this.getLocationAndLoadCities();
@@ -21,9 +20,9 @@ class App extends Component {
 
   render() {
     return (
-      <div className={style.container}>
+      <div className={styles.container}>
         <Header
-          nearestCity={this.state.nearestCity} />
+          nearestCity={this.state.nearbyCity} />
         <List
           items={this.state.cities} />
       </div>
@@ -41,4 +40,4 @@ class App extends Component {
   }
 }
 
-ReactDOM.render(<App />, document.querySelector('.container'));
+render(<App />, document.querySelector('.container'));
