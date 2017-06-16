@@ -26,7 +26,7 @@ class Header extends Component<any, IHeaderState> {
   }
 
   componentWillReceiveProps(nextProps) {
-    var advisoryCode = nextProps.nearestCity.advisory_code;
+    const advisoryCode = nextProps.nearestCity.advisory_code;
     this.setState({
       advisory: this.getAdvisoryString(advisoryCode),
       advisoryImageUrl: this.getAdvisoryImageUrl(advisoryCode)
